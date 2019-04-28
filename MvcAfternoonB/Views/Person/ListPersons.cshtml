@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcAfternoonB.Models.Person>
+
+@{
+    ViewBag.Title = "ListPerson";
+}
+
+<h2>ListPerson</h2>
+
+@{
+    //single code
+    //mulpiple code
+    string name = "xuseen";
+}
+
+@*<h1>@name</h1>*@
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (Model.Count() == 0)
+{
+    <center><h2>There is no data </h2></center>
+}
+else
+{
+   
+        <table class="table table-bordered table-hover table-striped">
+            <tr class="alert alert-success">
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Addres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        foreach
+                        @Html.DisplayFor(modelItem => item.Addres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Update", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+  
+}
